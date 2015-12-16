@@ -25,9 +25,23 @@ class DefaultController extends Controller
         $curl     = new CurlHttpAdapter();
         $geocoder = new GoogleMaps($curl);
 
-        $adress = $geocoder->reverse($lat, $lon);
-        echo $adress->first()->getLocality();
+        $addressCollection = $geocoder->reverse($lat, $lon);
+        $adress            = $addressCollection->first();
 
-        return new Response('Response.');
+        $city    = $adress->getLocality();
+        $country = $adress->getCountry()->getName();
+        $region  = $adress->getSubLocality();
+
+        $arrayJson = array(
+            'date'    => $date,
+            'hour'    => $hour,
+            'lat'     => $lat,
+            'lon'     => $lon,
+            'city'    => $city,
+            'country' => $country,
+            'region'  => $region,
+        );
+
+        return new Response(json_encode($arrayJson));
     }
 }
