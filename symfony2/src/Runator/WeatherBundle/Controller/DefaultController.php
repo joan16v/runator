@@ -11,6 +11,8 @@ use Endroid\OpenWeatherMap\Client;
 
 class DefaultController extends Controller
 {
+    private $openWeatherApiKey = 'dfd80d7325a44f089a8f55ca3c577b0f';
+
     public function indexAction($name)
     {
         return $this->render('RunatorWeatherBundle:Default:index.html.twig', array('name' => $name));
@@ -34,7 +36,7 @@ class DefaultController extends Controller
         $countryCode = $adress->getCountry()->getCode();
         $region      = $adress->getSubLocality();
 
-        $client        = new Client('dfd80d7325a44f089a8f55ca3c577b0f');
+        $client        = new Client($this->openWeatherApiKey);
         $weatherObject = $client->getWeather($city . ',' . $countryCode);
         $weather       = $weatherObject->weather[0]->main;
 
