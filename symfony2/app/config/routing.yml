@@ -1,3 +1,7 @@
+runator_weather:
+    resource: "@RunatorWeatherBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

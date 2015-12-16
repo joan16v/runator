@@ -1,0 +1,7 @@
+runator_weather_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: RunatorWeatherBundle:Default:index }
+
+runator_weather_geo:
+    pattern:  /geoweather
+    defaults: { _controller: RunatorWeatherBundle:Default:weather }
