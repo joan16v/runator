@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Ivory\HttpAdapter\CurlHttpAdapter;
 use Geocoder\Provider\GoogleMaps;
+use Endroid\OpenWeatherMap\Client;
 
 class DefaultController extends Controller
 {
@@ -28,15 +29,21 @@ class DefaultController extends Controller
         $addressCollection = $geocoder->reverse($lat, $lon);
         $adress            = $addressCollection->first();
 
-        $city    = $adress->getLocality();
-        $country = $adress->getCountry()->getName();
-        $region  = $adress->getSubLocality();
+        $city        = $adress->getLocality();
+        $country     = $adress->getCountry()->getName();
+        $countryCode = $adress->getCountry()->getCode();
+        $region      = $adress->getSubLocality();
+
+        $client        = new Client('dfd80d7325a44f089a8f55ca3c577b0f');
+        $weatherObject = $client->getWeather($city . ',' . $countryCode);
+        $weather       = $weatherObject->weather[0]->main;
 
         $arrayJson = array(
             'date'    => $date,
             'hour'    => $hour,
             'lat'     => $lat,
             'lon'     => $lon,
+            'weather' => $weather,
             'city'    => $city,
             'country' => $country,
             'region'  => $region,
