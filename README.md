@@ -25,6 +25,14 @@ https://github.com/joan16v/runator/blob/master/symfony2/src/Runator/WeatherBundl
 
 Y el método saveWeatherQuery en el DefaultController.
 
+He usado las librerías endroid/OpenWeatherMap:
+https://github.com/endroid/OpenWeatherMap
+
+Y willdurand/geocoder:
+https://github.com/geocoder-php/Geocoder
+
+Que he instalado con composer para consultar los datos de geoip y weather.
+
 ------------------------------------------------------------------------------------------------
 EJERCICIO 2
 ------------------------------------------------------------------------------------------------
