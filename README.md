@@ -49,8 +49,10 @@ https://github.com/joan16v/runator/blob/master/symfony2/src/Runator/FacebookBund
 
 https://github.com/joan16v/runator/blob/master/symfony2/src/Runator/FacebookBundle/Entity/Like.php
 
-La tabla POST tiene los campos id, text, dateTime y idUser.
-La tabla COMMENT tiene id, text, dateTime y idPost.
-La tabla AD tiene id y urlImage.
+La tabla POST tiene los campos id, text, dateTime y idUser. He imaginado que un post tiene un texto, con una fecha y hora y pertenece a un usuario.
 
-La tabla LIKE tiene id, dateTime, idUser, idPost, idComment y idAd. Los campos idPost, idComment y idAd pueden ser NULL, ya queun like solo pertenecerá a uno de los 3 elementos: o el like pertenece a un post, o a un comment o a un ad.
+La tabla COMMENT tiene id, text, dateTime y idPost. Considero que un comentario tiene un texto y una fecha/hora y se asocia con un post.
+
+La tabla AD tiene id y urlImage. He imaginado los ads como un fichero de imagen simplemente.
+
+La tabla LIKE tiene id, dateTime, idUser, idPost, idComment y idAd. Un like tiene una fecha/hora y pertenece a un usuario. Los campos idPost, idComment y idAd pueden ser NULL, ya que un like solo pertenecerá a uno de los 3 elementos: o el like pertenece a un post, o a un comment o a un ad. Se pondría el identificador de la entidad en cuestión y los otros dos como NULL en cada fila de la tabla.
