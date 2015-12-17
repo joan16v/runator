@@ -13,3 +13,5 @@ http://localhost/runator/symfony2/web/app_dev.php/geoweather?date=2015-08-01&hou
 
 La ruta está creada en el routing.yml:
 https://github.com/joan16v/runator/blob/master/symfony2/src/Runator/WeatherBundle/Resources/config/routing.yml
+
+Para la consulta del tiempo no le incluyo parámetros de fecha, hora, ya que según he visto parece que no se puede acceder al histórico de forma gratuita.
