@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Ivory\HttpAdapter\CurlHttpAdapter;
 use Geocoder\Provider\GoogleMaps;
 use Endroid\OpenWeatherMap\Client;
+use Runator\WeatherBundle\Entity\Weather;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class DefaultController extends Controller
 {
@@ -34,7 +36,7 @@ class DefaultController extends Controller
         $city        = $adress->getLocality();
         $country     = $adress->getCountry()->getName();
         $countryCode = $adress->getCountry()->getCode();
-        $region      = $adress->getSubLocality();
+        $region      = is_null($adress->getSubLocality()) ? '' : $adress->getSubLocality();
 
         $client        = new Client($this->openWeatherApiKey);
         $weatherObject = $client->getWeather($city . ',' . $countryCode);
@@ -51,6 +53,25 @@ class DefaultController extends Controller
             'region'  => $region,
         );
 
+        $this->saveWeatherQuery($arrayJson);
+
         return new Response(json_encode($arrayJson));
+    }
+
+    private function saveWeatherQuery(array $query)
+    {
+        $weather = new Weather();
+        $weather->setDate(new \DateTime($query['date']));
+        $weather->setHour(new \DateTime($query['hour']));
+        $weather->setLat($query['lat']);
+        $weather->setLon($query['lon']);
+        $weather->setWeather($query['weather']);
+        $weather->setCountry($query['country']);
+        $weather->setRegion($query['region']);
+        $weather->setCity($query['city']);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($weather);
+        $em->flush();
     }
 }

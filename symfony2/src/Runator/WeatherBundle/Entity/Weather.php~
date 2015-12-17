@@ -1,0 +1,59 @@
+<?php
+
+namespace Runator\WeatherBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="weather")
+ */
+class Weather
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $date;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    protected $hour;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    protected $lat;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    protected $lon;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $weather;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $country;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $region;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $city;
+}
