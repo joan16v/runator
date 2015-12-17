@@ -15,3 +15,8 @@ La ruta está creada en el routing.yml:
 https://github.com/joan16v/runator/blob/master/symfony2/src/Runator/WeatherBundle/Resources/config/routing.yml
 
 Para la consulta del tiempo no le incluyo parámetros de fecha, hora, ya que según he visto parece que no se puede acceder al histórico de forma gratuita.
+
+Para guardar en base de datos las weather query, he usado MySQL/Doctrine. He creado la entidad Weather:
+https://github.com/joan16v/runator/blob/master/symfony2/src/Runator/WeatherBundle/Entity/Weather.php
+
+Y el método saveWeatherQuery en el DefaultController.
