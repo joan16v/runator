@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Runator\WeatherBundle\RunatorWeatherBundle(),
+            new Runator\FacebookBundle\RunatorFacebookBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

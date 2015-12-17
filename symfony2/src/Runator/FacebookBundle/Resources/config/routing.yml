@@ -1,0 +1,3 @@
+runator_facebook_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: RunatorFacebookBundle:Default:index }

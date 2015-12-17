@@ -1,3 +1,7 @@
+runator_facebook:
+    resource: "@RunatorFacebookBundle/Resources/config/routing.yml"
+    prefix:   /
+
 runator_weather:
     resource: "@RunatorWeatherBundle/Resources/config/routing.yml"
     prefix:   /
